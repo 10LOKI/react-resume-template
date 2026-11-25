@@ -9,10 +9,17 @@ import {useNavObserver} from '../../hooks/useNavObserver';
 
 export const headerID = 'headerNav';
 
+const sectionLabels: Partial<Record<SectionId, string>> = {
+  [SectionId.About]: 'À propos',
+  [SectionId.Resume]: 'Parcours',
+  [SectionId.Portfolio]: 'Projets',
+  [SectionId.Contact]: 'Contact',
+};
+
 const Header: FC = memo(() => {
   const [currentSection, setCurrentSection] = useState<SectionId | null>(null);
   const navSections = useMemo(
-    () => [SectionId.About, SectionId.Resume, SectionId.Portfolio, SectionId.Testimonials, SectionId.Contact],
+    () => [SectionId.About, SectionId.Resume, SectionId.Portfolio, SectionId.Contact],
     [],
   );
 
@@ -45,6 +52,7 @@ const DesktopNav: FC<{navSections: SectionId[]; currentSection: SectionId | null
               current={section === currentSection}
               inactiveClass={inactiveClass}
               key={section}
+              label={sectionLabels[section] ?? section}
               section={section}
             />
           ))}
@@ -103,6 +111,7 @@ const MobileNav: FC<{navSections: SectionId[]; currentSection: SectionId | null}
                       current={section === currentSection}
                       inactiveClass={inactiveClass}
                       key={section}
+                      label={sectionLabels[section] ?? section}
                       onClick={toggleOpen}
                       section={section}
                     />
@@ -119,18 +128,19 @@ const MobileNav: FC<{navSections: SectionId[]; currentSection: SectionId | null}
 
 const NavItem: FC<{
   section: string;
+  label: string;
   current: boolean;
   activeClass: string;
   inactiveClass: string;
   onClick?: () => void;
-}> = memo(({section, current, inactiveClass, activeClass, onClick}) => {
+}> = memo(({section, label, current, inactiveClass, activeClass, onClick}) => {
   return (
     <Link
       className={classNames(current ? activeClass : inactiveClass)}
       href={`/#${section}`}
       key={section}
       onClick={onClick}>
-      {section}
+      {label}
     </Link>
   );
 });

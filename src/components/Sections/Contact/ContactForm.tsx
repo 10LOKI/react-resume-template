@@ -30,12 +30,11 @@ const ContactForm: FC = memo(() => {
   );
 
   const handleSendMessage = useCallback(
-    async (event: React.FormEvent<HTMLFormElement>) => {
+    (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
-      /**
-       * This is a good starting point to wire up your form submission logic
-       * */
-      console.log('Data to send: ', data);
+      const subject = encodeURIComponent(`Contact via mon CV — ${data.name}`);
+      const body = encodeURIComponent(`${data.message}\n\n${data.name}\n${data.email}`);
+      window.location.href = `mailto:ayoubouharda33@gmail.com?subject=${subject}&body=${body}`;
     },
     [data],
   );
@@ -45,13 +44,13 @@ const ContactForm: FC = memo(() => {
 
   return (
     <form className="grid min-h-[320px] grid-cols-1 gap-y-4" method="POST" onSubmit={handleSendMessage}>
-      <input className={inputClasses} name="name" onChange={onChange} placeholder="Name" required type="text" />
+      <input className={inputClasses} name="name" onChange={onChange} placeholder="Nom" required type="text" />
       <input
         autoComplete="email"
         className={inputClasses}
         name="email"
         onChange={onChange}
-        placeholder="Email"
+        placeholder="E-mail"
         required
         type="email"
       />
@@ -65,10 +64,10 @@ const ContactForm: FC = memo(() => {
         rows={6}
       />
       <button
-        aria-label="Submit contact form"
+        aria-label="Envoyer le message"
         className="w-max rounded-full border-2 border-orange-600 bg-stone-900 px-4 py-2 text-sm font-medium text-white shadow-md outline-none hover:bg-stone-800 focus:ring-2 focus:ring-orange-600 focus:ring-offset-2 focus:ring-offset-stone-800"
         type="submit">
-        Send Message
+        Envoyer le message
       </button>
     </form>
   );

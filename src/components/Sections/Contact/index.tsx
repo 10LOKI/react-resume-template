@@ -13,9 +13,9 @@ import Section from '../../Layout/Section';
 import ContactForm from './ContactForm';
 
 const ContactValueMap: Record<ContactType, ContactValue> = {
-  [ContactType.Email]: {Icon: EnvelopeIcon, srLabel: 'Email'},
-  [ContactType.Phone]: {Icon: DevicePhoneMobileIcon, srLabel: 'Phone'},
-  [ContactType.Location]: {Icon: MapPinIcon, srLabel: 'Location'},
+  [ContactType.Email]: {Icon: EnvelopeIcon, srLabel: 'E-mail'},
+  [ContactType.Phone]: {Icon: DevicePhoneMobileIcon, srLabel: 'Téléphone'},
+  [ContactType.Location]: {Icon: MapPinIcon, srLabel: 'Localisation'},
   [ContactType.Github]: {Icon: GithubIcon, srLabel: 'Github'},
   [ContactType.LinkedIn]: {Icon: LinkedInIcon, srLabel: 'LinkedIn'},
   [ContactType.Facebook]: {Icon: FacebookIcon, srLabel: 'Facebook'},

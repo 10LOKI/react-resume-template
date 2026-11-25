@@ -9,10 +9,7 @@ import {
 } from '@heroicons/react/24/outline';
 
 import GithubIcon from '../components/Icon/GithubIcon';
-import InstagramIcon from '../components/Icon/InstagramIcon';
 import LinkedInIcon from '../components/Icon/LinkedInIcon';
-import StackOverflowIcon from '../components/Icon/StackOverflowIcon';
-import TwitterIcon from '../components/Icon/TwitterIcon';
 import heroImage from '../images/header-background.webp';
 import porfolioImage1 from '../images/portfolio/portfolio-1.jpg';
 import porfolioImage2 from '../images/portfolio/portfolio-2.jpg';
@@ -20,13 +17,6 @@ import porfolioImage3 from '../images/portfolio/portfolio-3.jpg';
 import porfolioImage4 from '../images/portfolio/portfolio-4.jpg';
 import porfolioImage5 from '../images/portfolio/portfolio-5.jpg';
 import porfolioImage6 from '../images/portfolio/portfolio-6.jpg';
-import porfolioImage7 from '../images/portfolio/portfolio-7.jpg';
-import porfolioImage8 from '../images/portfolio/portfolio-8.jpg';
-import porfolioImage9 from '../images/portfolio/portfolio-9.jpg';
-import porfolioImage10 from '../images/portfolio/portfolio-10.jpg';
-import porfolioImage11 from '../images/portfolio/portfolio-11.jpg';
-import profilepic from '../images/profilepic.jpg';
-import testimonialImage from '../images/testimonial.webp';
 import {
   About,
   ContactSection,
@@ -36,7 +26,6 @@ import {
   PortfolioItem,
   SkillGroup,
   Social,
-  TestimonialSection,
   TimelineItem,
 } from './dataDef';
 
@@ -44,8 +33,9 @@ import {
  * Page meta data
  */
 export const homePageMeta: HomepageMeta = {
-  title: 'React Resume Template',
-  description: "Example site built with Tim Baker's react resume template",
+  title: 'Ayoub Ouharda — CV & Portfolio',
+  description:
+    'Développeur web Full Stack (Java, Angular, Laravel, React), à l’aise en français et en anglais. Disponible en développement web et en relation client.',
 };
 
 /**
@@ -59,7 +49,6 @@ export const SectionId = {
   Resume: 'resume',
   Skills: 'skills',
   Stats: 'stats',
-  Testimonials: 'testimonials',
 } as const;
 
 export type SectionId = (typeof SectionId)[keyof typeof SectionId];
@@ -69,31 +58,32 @@ export type SectionId = (typeof SectionId)[keyof typeof SectionId];
  */
 export const heroData: Hero = {
   imageSrc: heroImage,
-  name: `I'm Tim Baker.`,
+  name: `Ayoub Ouharda`,
   description: (
     <>
       <p className="prose-sm text-stone-200 sm:prose-base lg:prose-lg">
-        I'm a Victoria based <strong className="text-stone-100">Full Stack Software Engineer</strong>, currently working
-        at <strong className="text-stone-100">Instant Domains</strong> helping build a modern, mobile-first, domain
-        registrar and site builder.
+        Développeur <strong className="text-stone-100">Full Stack</strong> basé à Béni Mellal / Nador (Maroc). Je
+        conçois des applications web, des API REST et des solutions métier avec{' '}
+        <strong className="text-stone-100">Java, Angular, Laravel et React</strong>.
       </p>
       <p className="prose-sm text-stone-200 sm:prose-base lg:prose-lg">
-        In my free time time, you can catch me training in <strong className="text-stone-100">Muay Thai</strong>,
-        plucking my <strong className="text-stone-100">banjo</strong>, or exploring beautiful{' '}
-        <strong className="text-stone-100">Vancouver Island</strong>.
+        Je maîtrise le <strong className="text-stone-100">français et l’anglais</strong> et je suis ouvert aux postes
+        de <strong className="text-stone-100">développeur web</strong> comme aux missions de{' '}
+        <strong className="text-stone-100">charge de clientèle / centre d’appels</strong> : écoute, compréhension des
+        besoins et résolution de problèmes.
       </p>
     </>
   ),
   actions: [
     {
       href: '/assets/resume.pdf',
-      text: 'Resume',
+      text: 'Télécharger mon CV',
       primary: true,
       Icon: ArrowDownTrayIcon,
     },
     {
       href: `#${SectionId.Contact}`,
-      text: 'Contact',
+      text: 'Me contacter',
       primary: false,
     },
   ],
@@ -103,17 +93,15 @@ export const heroData: Hero = {
  * About section
  */
 export const aboutData: About = {
-  profileImageSrc: profilepic,
-  description: `Use this bio section as your way of describing yourself and saying what you do, what technologies you like
-  to use or feel most comfortable with, describing your personality, or whatever else you feel like throwing
-  in.`,
+  description:
+    'Développeur Full Stack Java / Angular, je conçois des applications web et des solutions métier. Mon parcours combine projets freelance, conception d’API REST et travail en équipe agile, avec une expérience complémentaire en Laravel et React. Je recherche actuellement des opportunités en développement web, mais je suis également disposé à mettre ma communication et ma maîtrise du français et de l’anglais au service d’un poste en relation client ou centre d’appels.',
   aboutItems: [
-    {label: 'Location', text: 'Victoria, BC', Icon: MapIcon},
-    {label: 'Age', text: '29', Icon: CalendarIcon},
-    {label: 'Nationality', text: 'Canadian / Irish', Icon: FlagIcon},
-    {label: 'Interests', text: 'Motorcycles, Muay Thai, Banjos', Icon: SparklesIcon},
-    {label: 'Study', text: 'University of Victoria', Icon: AcademicCapIcon},
-    {label: 'Employment', text: 'Instant Domains, inc.', Icon: BuildingOffice2Icon},
+    {label: 'Localisation', text: 'Béni Mellal / Nador, Maroc', Icon: MapIcon},
+    {label: 'Langues', text: 'Français · Anglais · Arabe', Icon: FlagIcon},
+    {label: 'Recherche', text: 'Développement web · Relation client FR/EN', Icon: SparklesIcon},
+    {label: 'Formation', text: 'YouCode Nador (Simplon.co)', Icon: AcademicCapIcon},
+    {label: 'Expérience', text: 'Freelance · Stage PFA chez DEVTI', Icon: BuildingOffice2Icon},
+    {label: 'Centres d’intérêt', text: 'Film making · Création de contenu', Icon: CalendarIcon},
   ],
 };
 
@@ -122,71 +110,46 @@ export const aboutData: About = {
  */
 export const skills: SkillGroup[] = [
   {
-    name: 'Spoken languages',
+    name: 'Langues & relation client',
     skills: [
-      {
-        name: 'English',
-        level: 10,
-      },
-      {
-        name: 'French',
-        level: 4,
-      },
-      {
-        name: 'Spanish',
-        level: 3,
-      },
+      {name: 'Français — courant', level: 10},
+      {name: 'Anglais — courant / technique', level: 9},
+      {name: 'Arabe — langue maternelle', level: 10},
+      {name: 'Communication & écoute client', level: 9},
+      {name: 'Résolution de problèmes', level: 9},
     ],
   },
   {
-    name: 'Frontend development',
+    name: 'Développement front-end',
     skills: [
-      {
-        name: 'React',
-        level: 9,
-      },
-      {
-        name: 'Typescript',
-        level: 7,
-      },
-      {
-        name: 'GraphQL',
-        level: 6,
-      },
+      {name: 'Angular', level: 9},
+      {name: 'React JS', level: 8},
+      {name: 'TypeScript', level: 8},
+      {name: 'JavaScript', level: 8},
+      {name: 'Tailwind CSS', level: 8},
+      {name: 'Vue.js / Inertia.js', level: 7},
     ],
   },
   {
-    name: 'Backend development',
+    name: 'Back-end & API',
     skills: [
-      {
-        name: 'Node.js',
-        level: 8,
-      },
-      {
-        name: 'Rust',
-        level: 5,
-      },
-      {
-        name: 'Golang',
-        level: 4,
-      },
+      {name: 'Java & API REST', level: 9},
+      {name: 'PHP / Laravel', level: 8},
+      {name: 'Principes SOLID & MVC', level: 8},
+      {name: 'Intégration d’IA (DeepSeek, RAG)', level: 7},
+      {name: 'Python', level: 6},
     ],
   },
   {
-    name: 'Mobile development',
+    name: 'Bases de données & outils',
     skills: [
-      {
-        name: 'React Native',
-        level: 9,
-      },
-      {
-        name: 'Flutter',
-        level: 4,
-      },
-      {
-        name: 'Swift',
-        level: 3,
-      },
+      {name: 'MySQL', level: 9},
+      {name: 'Git / GitHub', level: 9},
+      {name: 'PostgreSQL & SQLite', level: 7},
+      {name: 'Docker & GitHub Actions', level: 7},
+      {name: 'Postman / API Dog', level: 8},
+      {name: 'Figma · UML · Jira', level: 7},
+      {name: 'MongoDB', level: 6},
     ],
   },
 ];
@@ -196,167 +159,137 @@ export const skills: SkillGroup[] = [
  */
 export const portfolioItems: PortfolioItem[] = [
   {
-    title: 'Project title 1',
-    description: 'Give a short description of your project here.',
-    url: 'https://reactresume.com',
+    title: 'Agrifober',
+    description:
+      'Plateforme web et mobile d’assistance agricole : rapports des techniciens, suivi de la fertilisation et conseils personnalisés via un assistant IA (DeepSeek, RAG, API météo).',
+    url: 'https://github.com/10LOKI/AgriFober',
     image: porfolioImage1,
   },
   {
-    title: 'Project title 2',
-    description: 'Give a short description of your project here.',
-    url: 'https://reactresume.com',
+    title: 'RestaurantAI',
+    description:
+      'API REST et interface React : recommandation de plats par IA, gestion des rôles, authentification Sanctum et traitements asynchrones (queues & jobs).',
+    url: 'https://github.com/10LOKI/Restaurant-AI-Brigade',
     image: porfolioImage2,
   },
   {
-    title: 'Project title 3',
-    description: 'Give a short description of your project here.',
-    url: 'https://reactresume.com',
+    title: 'Loki-PHP',
+    description:
+      'Conception d’un framework PHP maison avec une architecture MVC structurée, sécurisée et évolutive (Clean Code, prévention XSS/SQLi).',
+    url: 'https://github.com/10LOKI',
     image: porfolioImage3,
   },
   {
-    title: 'Project title 4',
-    description: 'Give a short description of your project here.',
-    url: 'https://reactresume.com',
+    title: 'LocalMart',
+    description:
+      'Plateforme e-commerce académique en Laravel, MySQL et Tailwind CSS. Rôle de Scrum Master : gestion fine des accès et optimisation des performances.',
+    url: 'https://github.com/10LOKI/LocalMart',
     image: porfolioImage4,
   },
   {
-    title: 'Project title 5',
-    description: 'Give a short description of your project here.',
-    url: 'https://reactresume.com',
+    title: 'ActTogether',
+    description:
+      'Projet hackathon (2ᵉ place) : mise en relation des étudiants avec des missions solidaires. Coordination Scrum et architecture API React.',
+    url: 'https://github.com/10LOKI/act2ogether',
     image: porfolioImage5,
   },
   {
-    title: 'Project title 6',
-    description: 'Give a short description of your project here.',
-    url: 'https://reactresume.com',
+    title: 'Portfolio 10LOKI',
+    description:
+      'Site portfolio personnel présentant les projets, le parcours et les compétences. Déployé sur GitHub Pages.',
+    url: 'https://10loki.github.io/Portfolio-/',
     image: porfolioImage6,
-  },
-  {
-    title: 'Project title 7',
-    description: 'Give a short description of your project here.',
-    url: 'https://reactresume.com',
-    image: porfolioImage7,
-  },
-  {
-    title: 'Project title 8',
-    description: 'Give a short description of your project here.',
-    url: 'https://reactresume.com',
-    image: porfolioImage8,
-  },
-  {
-    title: 'Project title 9',
-    description: 'Give a short description of your project here.',
-    url: 'https://reactresume.com',
-    image: porfolioImage9,
-  },
-  {
-    title: 'Project title 10',
-    description: 'Give a short description of your project here.',
-    url: 'https://reactresume.com',
-    image: porfolioImage10,
-  },
-  {
-    title: 'Project title 11',
-    description: 'Give a short description of your project here.',
-    url: 'https://reactresume.com',
-    image: porfolioImage11,
   },
 ];
 
 /**
- * Resume section -- TODO: Standardize resume contact format or offer MDX
+ * Resume section
  */
 export const education: TimelineItem[] = [
   {
-    date: 'April 2007',
-    location: 'Clown college',
-    title: 'Masters in Beer tasting',
-    content: <p>Describe your experience at school, what you learned, what useful skills you have acquired etc.</p>,
+    date: '2025 – 2027',
+    location: 'YouCode Nador (Simplon.co)',
+    title: 'Développement web Full Stack',
+    content: (
+      <p>
+        Formation intensive aux technologies Java, Angular, Laravel, React et API REST, avec un travail régulier en
+        équipe agile et des projets concrets livrés en autonomie.
+      </p>
+    ),
   },
   {
-    date: 'March 2003',
-    location: 'School of Business',
-    title: 'What did you study 101',
-    content: <p>Describe your experience at school, what you learned, what useful skills you have acquired etc.</p>,
+    date: '2024 – 2025',
+    location: 'Université Sultan Moulay Slimane',
+    title: '1ʳᵉ année en sciences physiques (PC)',
+    content: <p>Année universitaire en sciences physiques, avant l’orientation vers le développement web.</p>,
+  },
+  {
+    date: '2023 – 2024',
+    location: 'Lycée Ezzerktouni',
+    title: 'Baccalauréat sciences physiques',
+    content: <p>Obtention du baccalauréat en sciences physiques.</p>,
   },
 ];
 
 export const experience: TimelineItem[] = [
   {
-    date: 'March 2010 - Present',
-    location: 'Awesome Development Company',
-    title: 'Senior UX Engineer',
+    date: 'Mai – Juin 2026 · 2 mois',
+    location: 'DEVTI Technologie · Tanger',
+    title: 'Développeur Full Stack — Stage PFA',
     content: (
       <p>
-        Describe work, special projects, notable achievements, what technologies you have been working with, and
-        anything else that would be useful for an employer to know.
+        Responsable backend et API mobile, et full stack de l’espace admin. Échanges directs avec le client pour cadrer
+        les besoins, participation à la conception du projet et livraison des fonctionnalités en autonomie en équipe
+        agile. <strong>Laravel 11 · Sanctum · Inertia.js · Vue.js · Flutter · MySQL</strong>
       </p>
     ),
   },
   {
-    date: 'March 2007 - February 2010',
-    location: 'Garage Startup Studio',
-    title: 'Junior bug fixer',
+    date: '2024 – Présent',
+    location: 'Freelance',
+    title: 'Consultant technique Full Stack',
     content: (
       <p>
-        Describe work, special projects, notable achievements, what technologies you have been working with, and
-        anything else that would be useful for an employer to know.
+        Accompagnement de clients de la définition du besoin jusqu’à la livraison : recueil des exigences, conception
+        de la solution et suivi post-déploiement. Projets en e-commerce et automatisation métier, avec des échanges en
+        français et en anglais. <strong>Laravel · React JS · MySQL · Tailwind CSS · API Design</strong>
       </p>
     ),
   },
 ];
 
 /**
- * Testimonial section
- */
-export const testimonial: TestimonialSection = {
-  imageSrc: testimonialImage,
-  testimonials: [
-    {
-      name: 'John Doe',
-      text: 'Use this as an opportunity to promote what it is like to work with you. High value testimonials include ones from current or past co-workers, managers, or from happy clients.',
-      image: 'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/169.jpg',
-    },
-    {
-      name: 'Jane Doe',
-      text: 'Here you should write some nice things that someone has said about you. Encourage them to be specific and include important details (notes about a project you were on together, impressive quality produced, etc).',
-      image: 'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/14.jpg',
-    },
-    {
-      name: 'Someone else',
-      text: 'Add several of these, and keep them as fresh as possible, but be sure to focus on quality testimonials with strong highlights of your skills/work ethic.',
-      image: 'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/69.jpg',
-    },
-  ],
-};
-
-/**
  * Contact section
  */
-
 export const contact: ContactSection = {
-  headerText: 'Get in touch.',
-  description: 'Here is a good spot for a message to your readers to let them know how best to reach out to you.',
+  headerText: 'Parlons de votre projet.',
+  description:
+    'Un poste en développement web, une mission de relation client francophone/anglophone ou simplement une question : écrivez-moi, je réponds rapidement. Vous pouvez aussi télécharger mon CV depuis la section d’accueil.',
   items: [
     {
       type: ContactType.Email,
-      text: 'reachout@timbaker.me',
-      href: 'mailto:reachout@timbaker.me',
+      text: 'ayoubouharda33@gmail.com',
+      href: 'mailto:ayoubouharda33@gmail.com',
+    },
+    {
+      type: ContactType.Phone,
+      text: '+212 684 093 893',
+      href: 'tel:+212684093893',
     },
     {
       type: ContactType.Location,
-      text: 'Victoria BC, Canada',
-      href: 'https://www.google.ca/maps/place/Victoria,+BC/@48.4262362,-123.376775,14z',
+      text: 'Béni Mellal / Nador, Maroc',
+      href: 'https://www.google.com/maps/search/?api=1&query=Beni+Mellal+Maroc',
     },
     {
-      type: ContactType.Instagram,
-      text: '@tbakerx',
-      href: 'https://www.instagram.com/tbakerx/',
+      type: ContactType.LinkedIn,
+      text: 'linkedin.com/in/ayoub-ouharda/',
+      href: 'https://www.linkedin.com/in/ayoub-ouharda/',
     },
     {
       type: ContactType.Github,
-      text: 'tbakerx',
-      href: 'https://github.com/tbakerx',
+      text: 'github.com/10LOKI',
+      href: 'https://github.com/10LOKI',
     },
   ],
 };
@@ -365,9 +298,6 @@ export const contact: ContactSection = {
  * Social items
  */
 export const socialLinks: Social[] = [
-  {label: 'Github', Icon: GithubIcon, href: 'https://github.com/tbakerx'},
-  {label: 'Stack Overflow', Icon: StackOverflowIcon, href: 'https://stackoverflow.com/users/8553186/tim-baker'},
-  {label: 'LinkedIn', Icon: LinkedInIcon, href: 'https://www.linkedin.com/in/timbakerx/'},
-  {label: 'Instagram', Icon: InstagramIcon, href: 'https://www.instagram.com/reactresume/'},
-  {label: 'Twitter', Icon: TwitterIcon, href: 'https://twitter.com/TimBakerx'},
+  {label: 'GitHub', Icon: GithubIcon, href: 'https://github.com/10LOKI'},
+  {label: 'LinkedIn', Icon: LinkedInIcon, href: 'https://www.linkedin.com/in/ayoub-ouharda/'},
 ];
